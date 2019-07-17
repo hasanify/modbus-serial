@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{{title}}}</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body class="bg-secondary" style="overflow: hidden">
+	<div class="row bg-light" style="padding: 10px">
+		<div class="col-sm-3">
+			<h1 style="font-size: 60pt"><b>Floor 1</b></h1>
+		</div>
+		<div class="col-sm-6">
+			
+		</div>
+		<div class="col-sm-3 text-right">
+			<h1><b><span id="time" style="font-size: 60pt">
+			<script>
+				setInterval(function() {
+				var today = new Date();
+				var time = today.getHours() + ":" + today.getMinutes();
+					document.getElementById('time').innerHTML = time;
+				}, 1000);
+			</script>
+		</span></b></h1>
+		</div>
+	</div>
+	<div class="container-fluid text-center vertical-align-center" style="position: absolute; top: 18%;">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="card shadow-lg">
+					<div class="card-header"><h2><b>Temperature</b></h2></div>
+					<div class="card-body" style="overflow: hidden; white-space: nowrap;"><center ><h1 style="font-size: 80pt;" id="temp"></h1></center>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card shadow-lg">
+					<div class="card-header"><h2><b>Humidity</b></h2></div>
+					<div class="card-body" style="overflow: hidden; white-space: nowrap;"><center><h1 style="font-size: 80pt" id="hum"></h1></center>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card shadow-lg">
+					<div class="card-header"><h2><b>CO<sup>2</sup></b></h2></div>
+					<div class="card-body" style="overflow: hidden; white-space: nowrap;"><center><h1 style="font-size: 80pt" id="co2"></h1></center>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3" style="margin-top: 25px;">
+				<div class="card shadow-lg">
+					<div class="card-header"><h2><b>PM 2.5</b></h2></div>
+					<div class="card-body" style="overflow: hidden; white-space: nowrap;"><center><h1 style="font-size: 60pt;" id="pm25"></h1></center>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3" style="margin-top: 25px;">
+				<div class="card shadow-lg">
+					<div class="card-header"><h2><b>PM 10</sup></b></h2></div>
+					<div class="card-body" style="overflow: hidden; white-space: nowrap;"><center><h1 style="font-size: 60pt;" id="pm10"></h1></center>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3" style="margin-top: 25px;">
+				<div class="card shadow-lg">
+					<div class="card-header"><h2><b>VOC</b></h2></div>
+					<div class="card-body" style="overflow: hidden; white-space: nowrap;"><center><h1 style="font-size: 60pt;" id="voc"></h1></center>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3" style="margin-top: 25px;">
+				<div class="card shadow-lg">
+					<div class="card-header"><h2><b>CO</b></h2></div>
+					<div class="card-body" style="overflow: hidden; white-space: nowrap;"><center><h1 style="font-size: 60pt;" id="co"></h1></center>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		setInterval(function() {
+			$.ajax('./read', 
+			{
+				dataType: 'json',
+				success: function (data){
+					$('#temp').html('<b>'+data[0]+'.'+data[1]+'<span style="font-size: 35pt">&deg;C</span></b>')
+					$('#hum').html('<b>'+data[2]+'.'+data[3]+' <span style="font-size: 35pt">%</span></b>')
+					$('#co2').html('<b>'+data[6]+' <span style="font-size: 35pt">ppm</span></b>')
+					$('#pm25').html('<b>'+data[5]+' <br><span style="font-size: 35pt">&mu;g/m<sup>3</sup></span></b>')
+					$('#pm10').html('<b>'+data[4]+' <br><span style="font-size: 35pt">&mu;g/m<sup>3</sup></span></b>')
+					$('#voc').html('<b>'+data[7]+' <br><span style="font-size: 35pt">ppb</span></b>')
+					$('#co').html('<b>'+data[8]+' <br><span style="font-size: 35pt">ppb</span></b>')
+},
+});
+}, 5000);
+</script>
+</body>
+</html>
