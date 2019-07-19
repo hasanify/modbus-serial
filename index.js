@@ -3,7 +3,6 @@ var client = new ModbusRTU();
 var express = require('express');
 var app = express();
 var path = require('path');
-var serialport = require('serialport');
 
 client.connectRTUBuffered("COM3", { baudRate: 9600, parity: 'none' });
 // client.setID(1);
@@ -11,6 +10,7 @@ client.connectRTUBuffered("COM3", { baudRate: 9600, parity: 'none' });
 function connect() {
     client.connectRTUBuffered("COM3", { baudRate: 9600, parity: 'none' });
 }
+
 app.use(express.static('public'));
 
 app.use('/', express.static(path.join(__dirname, 'public')));
