@@ -9,7 +9,7 @@ body {
 }
 
 .card-data-body {
-    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    /*text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;*/
     font-family: 'Lato', sans-serif;
     overflow: hidden;
     white-space: nowrap;
@@ -29,7 +29,7 @@ body {
 
 .container-fluid {
     position: absolute;
-    top: 22%;
+    top: 14%;
 }
 
 .footer {
