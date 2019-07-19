@@ -1,0 +1,50 @@
+body {
+    overflow: hidden;
+}
+
+.card-data {
+    border-radius: 40px;
+    border-bottom-left-radius: 40px !important;
+    border-bottom-right-radius: 40px !important;
+}
+
+.card-data-body {
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    color: white;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    text-align: center;
+}
+
+.data-heading {
+    font-size: 40pt;
+}
+
+.unit {
+    font-size: 35pt;
+}
+
+.container-fluid {
+    position: absolute;
+    top: 22%;
+}
+
+.footer {
+    padding: 30px;
+}
+
+.status {
+    font-size: 50pt;
+    padding-left: 10px;
+}
+
+.active {
+    color: green;
+}
+
+.disconnected {
+    color: red;
+}
